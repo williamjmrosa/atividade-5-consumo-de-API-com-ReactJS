@@ -1,0 +1,365 @@
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.2rem;
+    border: 0.4rem solid #eee;
+    margin: 1rem;
+}
+
+.divMenu > nav{
+    font-family: "system-ui, Arial", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+}
+
+nav a{
+    text-decoration: none;
+    color: #fff
+
+}
+
+a:hover{
+    transform: translateY(-4px);
+    transition: all 0.2s ease-in-out;
+}
+
+
+main{
+    padding: 16px
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #6548da;
+}
+
+img{
+    max-width: 100px;
+    width: 100%;
+}
+
+#resultado{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* Fundo branco para se destacar do roxo */
+    border: none; /* Removendo a borda sólida */
+    border-radius: 16px; /* Aumentando o arredondamento */
+    padding: 1.5rem; /* Aumentando o padding interno */
+    margin: 1rem;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .1); /* Adicionando uma sombra mais suave e elegante */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .2);
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.card img {
+    max-width: 100%;
+    width: 100%; 
+    height: auto;
+    border-radius: 8px; 
+    margin-bottom: 1rem; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.paginacao{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.paginacao button{
+    cursor: pointer;
+    border: black solid 1px;
+    border-radius: 3.5rem;
+    padding: 0.5rem;
+    background-color: transparent;
+}
+
+.paginacao button:hover{
+    background-color: #4fa8f3;
+}
+
+.paginacao .selecionado{
+    background-color: #4fa8f3;
+}
+
+.paginacao button:disabled{
+    background-color: grey;
+    color: black;
+    cursor: not-allowed;
+}
+
+form input{
+    padding: 0.5rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    border: solid 2px #000;
+    border-right: none;
+    background-color: white;
+}
+
+form input:focus{
+    outline: none;
+    font-weight: bold;
+}
+
+form button[type="submit"]{
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    border: 2px solid #000;
+    border-left: none;
+    background-color: #b4b4b4;
+    
+}
+
+form #favoritos{
+    padding: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    border: solid 2px #000;
+    border-right: none;
+}
+
+form button:hover{
+    background-color: #4fa8f3;
+}
+
+#detalhes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto; /* Permite scroll se o conteúdo for grande */
+}
+
+#detalhes .detalhes{
+    position: relative;
+    width: 80%;
+    height: 80%;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    overflow: auto;
+    display: flex;
+    flex-flow: wrap;
+}
+
+#detalhes.mostrar{
+    display: flex;
+}
+
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-bottom: 1rem;
+    flex-basis: 100%;
+}
+
+@media (max-width: 910px) {
+    .filme{
+        display: flex !important;
+        align-items: center !important;
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    .filme img{
+        max-width: 300px !important;
+        width: 100% !important;
+        border-radius: 1rem !important;
+    }
+
+    .filme p{
+        text-align: justify !important;
+    }
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.info h2{
+    display: inline-block;
+    width: 100%;
+}
+
+.detalhes > img{
+    max-width: 200px;
+    width: 35%;
+    border-radius: 1rem;
+}
+
+.filme img{
+    max-width: 200px;
+    width: 100%;
+    border-radius: 1rem;
+
+
+}
+
+.filme{
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    gap: 1rem;
+}
+
+.info p{
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: justify;
+    margin: 1rem;
+}
+
+.elenco{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    text-align: center  ;
+}
+
+.cabecalho button{
+    cursor: pointer;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.cabecalho button:hover{
+    color: red;
+}
+
+.card button:hover{
+    background-color: #6A5ACD;
+}
+
+.card button {
+    background-color: #7B68EE; 
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.btn-error:hover{
+    color: #fff;
+}
+
+.error, .msg {
+    display: flex;
+    justify-content: center; /* Centraliza todo o conteúdo no contêiner flex */
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 50%;
+    margin: auto;
+}
+
+.error{
+    background-color: #eb0d0de7;
+}
+
+.msg{
+    background-color: #2eb872;
+}
+
+
+.error p {
+    /* O parágrafo será centralizado por 'justify-content' */
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-error {
+    cursor: pointer;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: transparent;
+    margin-left: auto; /* Esta propriedade empurra o botão para a direita */
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.favoritar{
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.carregando{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: #0000007e;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
