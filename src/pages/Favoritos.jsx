@@ -143,7 +143,7 @@ export default function Favoritos(){
 
     return (
         <div>
-            <h1>FAVORITOS</h1>
+            <h1 className="titulo">FAVORITOS</h1>
             {
                 msg && (
                     <div className="msg">
