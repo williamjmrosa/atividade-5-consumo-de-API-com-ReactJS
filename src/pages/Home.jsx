@@ -21,13 +21,15 @@ export default function Home(){
             const favoritos = localStorage.getItem("favoritos");
             setFavoritos(JSON.parse(favoritos) || []);
             setCarregouFavoritos(true);
+            setBusca('');
+            buscarFilme();
         }
     }, []);
 
     useEffect(() => {
-      if(busca !== '') {
-          buscarFilme();
-      } 
+      
+        buscarFilme();
+       
     },[busca]);
 
     useEffect(() => {
@@ -39,11 +41,17 @@ export default function Home(){
         try {
 
             const apiKey = import.meta.env.VITE_API_KEY;
-            const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=pt-BR&query=${busca}&page=${pagina}`);
+
+            let URL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=pt-BR&query=${busca}&page=${pagina}`;
+            if(busca === '') {
+                URL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&page=${pagina}`;
+            }
+
+            const response = await fetch(URL);
 
             const data = await response.json();
             setListaFilmes(data.results);
-            setTotalPaginas(data.total_pages);
+            setTotalPaginas(data.total_pages > 500 ? 500 : data.total_pages);
 
             setCarregando(false);
         } catch (error) {
@@ -125,7 +133,31 @@ export default function Home(){
 
     const mostrarPaginas = () => {
         let paginas = []
-
+        if(totalPaginas > 25 && pagina > 10) {
+            paginas.push(<button key={1} onClick={() => setPagina(1)}>1</button>);
+            paginas.push(<p className="mais">...</p>)
+            for(let i = pagina - 5; i <= (pagina + 5 > totalPaginas ? totalPaginas : pagina + 5); i++) {
+                if (i == pagina) {
+                    paginas.push(<button className="selecionado" key={i} onClick={() => setPagina(i)}>{i}</button>)
+                }else {
+                    paginas.push(<button key={i} onClick={() => setPagina(i)}>{i}</button>)
+                }
+            }
+            if(totalPaginas > (pagina + 5)){
+                paginas.push(<p className="mais">...</p>)             
+                paginas.push(<button key={totalPaginas} onClick={() => setPagina(totalPaginas)}>{totalPaginas}</button>)
+            }
+        }else if(totalPaginas > 25 && pagina <= 10) {
+            for(let i = 1; i <= 10; i++) {
+                if (i == pagina) {
+                    paginas.push(<button className="selecionado" key={i} onClick={() => setPagina(i)}>{i}</button>)
+                }else {
+                    paginas.push(<button key={i} onClick={() => setPagina(i)}>{i}</button>)
+                }
+            }
+            paginas.push(<p className="mais">...</p>)
+            paginas.push(<button key={totalPaginas} onClick={() => setPagina(totalPaginas)}>{totalPaginas}</button>)
+        }else {
             for(let i = 1; i <= totalPaginas; i++) {
                 if (i == pagina) {
                     paginas.push(<button className="selecionado" key={i} onClick={() => setPagina(i)}>{i}</button>)
@@ -133,9 +165,10 @@ export default function Home(){
                     paginas.push(<button key={i} onClick={() => setPagina(i)}>{i}</button>)
                 }
             }
-
-            return paginas
         }
+
+        return paginas
+    }
 
     const fechaErro = (e) => {
         if (e.target.id === 'error') {
