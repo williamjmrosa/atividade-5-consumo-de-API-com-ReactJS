@@ -1,7 +1,3 @@
-Com certeza\! Analisando a estrutura e os arquivos do seu projeto, preparei um `README.md` detalhado com o passo a passo para configurar e executar a aplicação.
-
------
-
 # Atividade 5: Consumo de API com ReactJS
 
 Este projeto é uma aplicação web desenvolvida em React que utiliza a API do The Movie Database (TMDB) para permitir que os usuários busquem informações sobre filmes, vejam detalhes e gerenciem uma lista de favoritos.
